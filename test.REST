@@ -1,0 +1,30 @@
+
+POST https://skjetlpadbmluieqcnlm.supabase.co/functions/v1/getemail 
+Content-Type: application/json
+
+{
+  "email":"dhnaush@gmam",
+  "pdfId":"fjjfjfjf"
+}
+
+
+###
+
+GET http://13.127.225.252/api/setemail?pdfId=858b4eb3-caed-4437-a5e1-5f4cc771805b&email="jkgd@gmail.com"
+Content-Type: application/json
+
+{
+  "id":"5113b108-c2b9-4aa4-851d-14a3ae6591a9"
+}
+
+###
+
+GET http://localhost:3000/test
+Content-Type: application/json
+
+{
+  "pdfId":"858b4eb3-caed-4437-a5e1-5f4cc771805b",
+  "email":"jkgd@gmail.com",
+  "data":"[{dd:dfhhf,ajajaj}]"
+}
+
