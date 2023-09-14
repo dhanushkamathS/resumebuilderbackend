@@ -247,7 +247,7 @@ async function createTexFile(data) {
         console.log('File created and data written successfully.');
         return {status:'Success',id:uuid};
 
-    } catch (error) {
+    } catch (err) {
          console.error('Error creating/writing to file:', err);
          throw err;
     }
