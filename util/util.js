@@ -60,15 +60,26 @@ const projectsSection = (data) =>{
 
     for(let i =0;i < data.length;i++){
         let point = ``
-        data[i]['points'].map((val)=>{
-            point += `\\resumeItem{${formatter(val)}}` + `\n` 
+
+         data[i]['points'].map((val)=>{
+            if(val.trim().length >0){
+                point += `\\resumeItem{${formatter(val)}}` + `\n` 
+            }
         })
 
         let project = `
         \\resumeProjectHeading {\\textbf{${formatter(data[i]?.projectName)}} $|$ \\emph{${formatter(data[i]?.tech)}}}{\\href{${formatter(data[i]?.link)}}{\\underline{link}}}
-          \\resumeItemListStart
-            ${point}
-          \\resumeItemListEnd
+          ${
+            point.trim().length > 0?
+            `
+            \\resumeItemListStart
+                ${point}
+            \\resumeItemListEnd
+            `
+            :
+            ``
+          }
+       
         `
 
         projects += project + `\n`
@@ -97,15 +108,26 @@ const experienceCreator = (data) =>{
 
     for(let i =0;i < data.length;i++){
         let point = ``
-        data[i]['points'].map((val)=>{
-            point += `\\resumeItem{${formatter(val)}}` + `\n` 
+        
+
+         data[i]['points'].map((val)=>{
+            if(val.trim().length >0){
+                point += `\\resumeItem{${formatter(val)}}` + `\n` 
+            }
         })
 
         let experience = `
         \\resumeSubheading {${formatter(data[i]?.company)} | ${formatter(data[i]?.role)}}{${formatter(data[i]?.date)}}{${formatter(data[i]?.location)}}{}
-        \\resumeItemListStart
-            ${point}
-          \\resumeItemListEnd
+        ${
+            point.trim().length > 0?
+            `
+            \\resumeItemListStart
+                ${point}
+            \\resumeItemListEnd
+            `
+            :
+            ``
+          }
         `
 
         experiences += experience + `\n`
@@ -136,15 +158,25 @@ const achievementCreator = (data) =>{
 
     for(let i =0;i < data.length;i++){
         let point = ``
-        data[i]['points'].map((val)=>{
-            point += `\\resumeItem{${formatter(val)}}` + `\n` 
+
+         data[i]['points'].map((val)=>{
+            if(val.trim().length >0){
+                point += `\\resumeItem{${formatter(val)}}` + `\n` 
+            }
         })
 
         let achievement = `
         \\resumeProjectHeading {\\textbf{${formatter(data[i]?.name)}}}{}
-        \\resumeItemListStart
-            ${point}
-          \\resumeItemListEnd
+        ${
+            point.trim().length > 0?
+            `
+            \\resumeItemListStart
+                ${point}
+            \\resumeItemListEnd
+            `
+            :
+            ``
+          }
         `
 
         achievements += achievement + `\n`
@@ -278,8 +310,8 @@ const formatter = (val) =>{
         return ''
     }
 
-    let updatedStr = val;
-    let targetChars = ['/\\/','%','$','#']
+    let updatedStr = val.replace(/[^\x00-\x7F]/g, "");;
+    let targetChars = ['/\\/','%','$','#','&','^']
 
   // Iterate over each target character
   for (let i = 0; i < targetChars.length; i++) {

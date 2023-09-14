@@ -19,7 +19,7 @@ Content-Type: application/json
 
 ###
 
-GET http://localhost:3000/test
+GET http://localhost:3000/api/getpdf?id=62081777-f297-4f55-b84d-419fbfb3a27f
 Content-Type: application/json
 
 {
@@ -28,3 +28,12 @@ Content-Type: application/json
   "data":"[{dd:dfhhf,ajajaj}]"
 }
 
+###
+
+
+POST http://139.59.9.20:3000/api/createpdf
+Content-Type: application/json
+
+{
+  "data" : {"personalDetail":{"firstName":"dhanush","lastName":"kamath","email":"dhanushkamath01@gmail.com","phoneNo":"+91919535434458","github":"https://github.com/dhanushkamathS","linkedin":"https://www.linkedin.com/in/dhanushkamaths/"},"experience":[{"company":"this & tha","role":"","location":"• This is a bullet point symbol.","date":"","points":[""]}],"education":[{"cllgName":"","course":"","location":"","year":""}],"projects":[{"projectName":"","tech":"","link":"","points":[""]}],"achievements":[{"name":"","points":[""]}],"skills":[]}
+}
